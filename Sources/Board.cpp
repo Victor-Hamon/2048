@@ -9,18 +9,21 @@ Board::Board() {
 }
 
 void Board::StartGame() {
-    while(window.isOpen()) {
+    while(_window->isOpen()) {
         sf::Event event;
 
-        while (window.pollEvent(event)) {
+        while (_window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                _window->close();
         }
-        window.clear(sf::Color::White);
-        window.display();
+        _window->clear(sf::Color::White);
+        _window->display();
     }
 }
 
 void Board::InitWindow() {
-    window.create(sf::VideoMode(1920, 1080), "2048");
+    _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "2048");
+    _gameObjects.emplace_back(_window);
+
+    _gameObjects[0].draw();
 }

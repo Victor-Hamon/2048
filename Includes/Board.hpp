@@ -7,10 +7,12 @@
 #define BOARD_SIZE_HEIGHT 4;
 #define BOARD_SIZE_WIDTH 4;
 #include <SFML/Graphics.hpp>
+#include "GameObject.hpp"
 
 class Board {
 private:
-    sf::RenderWindow window;
+    std::shared_ptr<sf::RenderWindow> _window;
+    std::vector<GameObject> _gameObjects;
 public:
     Board();
     void StartGame();
