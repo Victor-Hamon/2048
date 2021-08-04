@@ -75,7 +75,9 @@ void Board::DisplayGameObjects() {
 
 void Board::AddTile() {
     sf::Vector2<int> coordinates = GenerateCoordinates();
-    _board[coordinates.x][coordinates.y] = 1;
+    if (coordinates.x == -1 ||coordinates.y == -1)
+        return;
+    _board[coordinates.y][coordinates.x] += 1;
     BoardSquare newSquare(_window);
     newSquare.setRelativeX(static_cast<float>(coordinates.x) / (BOARD_SIZE_WIDTH));
     newSquare.setRelativeY(static_cast<float>(coordinates.y) / (BOARD_SIZE_HEIGHT));
@@ -93,8 +95,7 @@ sf::Vector2<int> Board::GenerateCoordinates() {
     for (int i = 0; i < BOARD_SIZE_HEIGHT; ++i) {
         for (int j = 0; j < BOARD_SIZE_WIDTH; ++j) {
             if (_board[i][j] == 0) {
-                std::cout << std::to_string(i) + "-" + std::to_string(j) << std::endl;
-                available_positions.emplace_back(i, j);
+                available_positions.emplace_back(j, i);
             }
         }
     }
@@ -109,8 +110,13 @@ sf::Vector2<int> Board::GenerateCoordinates() {
                             std::chrono::high_resolution_clock::now().time_since_epoch()
                     ).count());
     std::mt19937 gen(seed);
-    std::uniform_int_distribution<int> distrib(0, static_cast<int>(available_positions.size()));
-    return available_positions[distrib(gen)];
+
+    if(available_positions.empty())
+        return {-1,-1};
+    std::uniform_int_distribution<int> distrib(0, static_cast<int>(available_positions.size() - 1));
+    auto test = distrib(gen);
+    std::cout << std::to_string(test) << "===" << std::to_string(available_positions.size()) << std::endl;
+    return available_positions[test];
 }
 
 void Board::InitGameBoard() {
