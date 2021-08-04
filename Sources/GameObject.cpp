@@ -5,6 +5,7 @@
 #include "../Includes/GameObject.hpp"
 
 #include <utility>
+#include <iostream>
 
 GameObject::~GameObject() = default;
 
@@ -45,7 +46,7 @@ float GameObject::getRelativeY() const {
 }
 
 void GameObject::setRelativeY(float relativeY) {
-    _x = relativeY * static_cast<float>(_window->getSize().y);
+    _y = relativeY * static_cast<float>(_window->getSize().y);
     _relativeY = relativeY;
 }
 
@@ -67,7 +68,8 @@ sf::Vector2<float> GameObject::getRelativePosition() const {
 }
 
 [[maybe_unused]] void GameObject::draw() {
-    throw std::runtime_error("Unimplemented Functions in game object");
+    std::cout << "In the wrong function" << std::endl;
+    //throw std::runtime_error("Unimplemented Functions in game object");
 }
 
 void GameObject::draw(sf::RenderTarget &target, sf::RenderStates states) const {
