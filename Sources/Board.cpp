@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <random>
+#include <chrono>
 #include "../Includes/Board.hpp"
 #include "../Includes/BoardSquare.hpp"
 
