@@ -14,7 +14,7 @@ Board::Board() {
 
 void Board::StartGame() {
     while (_window->isOpen()) {
-        sf::Event event;
+        sf::Event event{};
 
         while (_window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
@@ -26,8 +26,7 @@ void Board::StartGame() {
                 }
             }
         }
-        _window->clear(sf::Color::White);
-        DisplayBackground();
+        _window->clear(sf::Color(217, 202, 179));
         DisplayGameObjects();
         _window->display();
     }
@@ -79,12 +78,12 @@ void Board::AddTile() {
         return;
     _board[coordinates.y][coordinates.x] += 1;
     BoardSquare newSquare(_window);
-    newSquare.setRelativeX(static_cast<float>(coordinates.x) / (BOARD_SIZE_WIDTH));
-    newSquare.setRelativeY(static_cast<float>(coordinates.y) / (BOARD_SIZE_HEIGHT));
-    newSquare.setSize({static_cast<float>(_window->getSize().x) / BOARD_SIZE_WIDTH,
-                       static_cast<float>(_window->getSize().y) / BOARD_SIZE_HEIGHT});
+    newSquare.setRelativeX(static_cast<float>(coordinates.x + 0.01) / (BOARD_SIZE_WIDTH));
+    newSquare.setRelativeY(static_cast<float>(coordinates.y + 0.01) / (BOARD_SIZE_HEIGHT));
+    newSquare.setSize({(static_cast<float>(_window->getSize().x) - 50) / BOARD_SIZE_WIDTH,
+                       (static_cast<float>(_window->getSize().y) - 50) / BOARD_SIZE_HEIGHT});
     //TODO make a proper color palette with a hashmap
-    newSquare.setSquareColor(sf::Color(250, 235, 224));
+    newSquare.setSquareColor(sf::Color(239, 227, 208));
     newSquare.getShape();
     _gameObjects.push_back(std::make_unique<BoardSquare>(newSquare));
 }

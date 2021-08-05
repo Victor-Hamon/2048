@@ -9,6 +9,7 @@
 class Tile : public GameObject {
 protected:
     sf::RectangleShape _shape;
+    sf::Text _value;
 public:
     const sf::Color &getSquareColor() const;
     void setSquareColor(const sf::Color &squareColor);
@@ -22,6 +23,7 @@ public:
     void setY(float y) override;
     void setRelativeX(float relativeX) override;
     void setRelativeY(float relativeY) override;
+    void setText(const std::string& val);
     void UpdatePosition();
     void setSize(sf::Vector2<float> size);
     sf::Vector2<float> getSize() const;

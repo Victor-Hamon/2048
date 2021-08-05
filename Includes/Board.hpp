@@ -9,8 +9,8 @@
 #include <array>
 #include "GameObject.hpp"
 
-#define BOARD_SIZE_HEIGHT 8
-#define BOARD_SIZE_WIDTH 8
+#define BOARD_SIZE_HEIGHT 4
+#define BOARD_SIZE_WIDTH 4
 #define WINDOW_W 720
 #define WINDOW_H 720
 

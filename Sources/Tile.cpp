@@ -9,6 +9,7 @@
 
 void Tile::draw() {
     _window->draw(_shape);
+    _window->draw(_value);
 }
 
 void Tile::UpdatePosition() {
@@ -77,4 +78,8 @@ void Tile::setSize(sf::Vector2<float> size) {
 
 sf::Vector2<float> Tile::getSize() const {
     return _shape.getSize();
+}
+
+void Tile::setText(const std::string& val) {
+    _value.setString(val);
 }
