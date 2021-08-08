@@ -20,7 +20,7 @@ class Board {
 private:
     std::shared_ptr<sf::RenderWindow> _window;
     std::vector<std::unique_ptr<GameObject>> _gameObjects;
-    std::array<std::array<int, BOARD_SIZE_WIDTH>, BOARD_SIZE_HEIGHT> _board;
+        std::array<std::array<int, BOARD_SIZE_WIDTH>, BOARD_SIZE_HEIGHT> _board;
 
     sf::RectangleShape _boardBackground;
 public:

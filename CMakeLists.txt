@@ -7,7 +7,7 @@ vcpkg_install_packages(sfml)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(2048 main.cpp Sources/Board.cpp Includes/Board.hpp Sources/GameObject.cpp Includes/GameObject.hpp Sources/BoardSquare.cpp Includes/BoardSquare.hpp Sources/Tile.cpp Includes/Tile.hpp)
+add_executable(2048 main.cpp Sources/Board.cpp Includes/Board.hpp Sources/GameObject.cpp Includes/GameObject.hpp Sources/BoardSquare.cpp Includes/BoardSquare.hpp Sources/Tile.cpp Includes/Tile.hpp Sources/InputHandler.cpp Includes/InputHandler.hpp)
 
 find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
 include_directories(${SFML_INCLUDE_DIRS})

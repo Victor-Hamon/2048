@@ -114,7 +114,6 @@ sf::Vector2<int> Board::GenerateCoordinates() {
         return {-1,-1};
     std::uniform_int_distribution<int> distrib(0, static_cast<int>(available_positions.size() - 1));
     auto test = distrib(gen);
-    std::cout << std::to_string(test) << "===" << std::to_string(available_positions.size()) << std::endl;
     return available_positions[test];
 }
 
